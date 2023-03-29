@@ -1,6 +1,8 @@
 export interface ColorsI {
   primary: string;
   secondary: string;
+  lightSecondary: string;
+  darkSecondary: string;
   text: string;
   subtitle: string;
   placeholder: string;

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Alert } from "react-native";
+import { View, Text, StyleSheet, Alert, FlatList } from "react-native";
 import theme from "../theme";
 import Title from "../components/Title";
 import { TitleStyles } from "../styles/Title.style";
@@ -7,6 +7,7 @@ import NumberContainer from "../components/NumberContainer";
 import { Button } from "../components";
 import { ButtonStyles } from "../styles/Button.style";
 import { AntDesign } from "@expo/vector-icons";
+import GuessLogItem from "./GuessLogItem";
 
 const generateRandom = (max: number, min: number, exclude: number): number => {
   const randomNum = Math.floor(Math.random() * (max - min)) + min; // random number between min and max
@@ -26,6 +27,7 @@ const GameScreen = (props: {
   const { onReset, userNumber, onGameOver } = props;
   const initialGuess = generateRandom(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  const [guessRounds, setGuessRounds] = useState([initialGuess]);
 
   const resetGame = () => {
     onReset(null);
@@ -61,6 +63,7 @@ const GameScreen = (props: {
       currentGuess
     );
     setCurrentGuess(newRandomNum);
+    setGuessRounds((prevGuessRounds) => [newRandomNum, ...prevGuessRounds]);
   };
 
   useEffect(() => {
@@ -68,6 +71,8 @@ const GameScreen = (props: {
       gameOver();
     }
   }, [currentGuess, userNumber, gameOver]);
+
+  const guessRoundListLength = guessRounds.length;
 
   return (
     <View style={styles.screen}>
@@ -102,9 +107,18 @@ const GameScreen = (props: {
           </Button>
         </View>
       </View>
-      {/* <View>
-        <Text>Rounds</Text>
-      </View> */}
+      <View style={styles.listContainer}>
+        <FlatList
+          data={guessRounds}
+          renderItem={(itemData) => (
+            <GuessLogItem
+              roundNumber={guessRounds.length - itemData.index}
+              guess={itemData.item}
+            />
+          )}
+          keyExtractor={(item) => (Math.random() * item).toString()}
+        />
+      </View>
     </View>
   );
 };
@@ -126,5 +140,9 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
+  },
+  listContainer: {
+    flex: 1,
+    padding: 16,
   },
 });
