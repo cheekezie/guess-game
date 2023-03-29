@@ -3,6 +3,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -45,51 +46,57 @@ const StartGameScreen = (props: { onPickNumber: any }) => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.root}>
-          <Title>Guess my number</Title>
-          <View style={styles.inputContainer}>
-            <Text style={{ color: theme.Colors.white }}>Enter a number</Text>
-            <TextInput
-              style={styles.numberIput}
-              inputMode="numeric"
-              maxLength={2}
-              onChangeText={inputHandler}
-              value={enteredValue}
-            />
-            <View style={styles.buttonContainer}>
-              <Button
-                onPress={confirmInputHandler}
-                textStyle={{ color: theme.Colors.white }}
-                buttonStyle={[ButtonStyles.secondary, ButtonStyles.buttonSm]}
-              >
-                Confirm
-              </Button>
-              <Button
-                onPress={resetInputHandler}
-                buttonStyle={[ButtonStyles.white, ButtonStyles.buttonSm]}
-              >
-                Reset
-              </Button>
+    <ScrollView style={styles.flex}>
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior={Platform.OS === "ios" ? "position" : "height"}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.root}>
+            <Title>Guess my number</Title>
+            <View style={styles.inputContainer}>
+              <Text style={{ color: theme.Colors.white }}>Enter a number</Text>
+              <TextInput
+                style={styles.numberIput}
+                inputMode="numeric"
+                maxLength={2}
+                onChangeText={inputHandler}
+                value={enteredValue}
+              />
+              <View style={styles.buttonContainer}>
+                <Button
+                  onPress={confirmInputHandler}
+                  textStyle={{ color: theme.Colors.white }}
+                  buttonStyle={[ButtonStyles.secondary, ButtonStyles.buttonSm]}
+                >
+                  Confirm
+                </Button>
+                <Button
+                  onPress={resetInputHandler}
+                  buttonStyle={[ButtonStyles.white, ButtonStyles.buttonSm]}
+                >
+                  Reset
+                </Button>
+              </View>
             </View>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
 export default StartGameScreen;
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
   root: {
     marginHorizontal: 16,
     marginTop: 100,
   },
   inputContainer: {
-    marginTop: 100,
+    marginTop: 400,
     paddingVertical: 20,
     paddingHorizontal: 16,
     marginHorizontal: 24,

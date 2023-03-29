@@ -8,6 +8,8 @@ const baseStyle = StyleSheet.create({
     borderRadius: 5,
     textAlign: "center",
     //fontFamily: "open-sans",
+    maxWidth: "80%",
+    alignSelf: "center",
     fontSize: theme.FontSize.boldInput,
   },
 });
