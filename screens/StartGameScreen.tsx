@@ -15,6 +15,7 @@ import { ButtonStyles } from "../styles/Button.style";
 import theme from "../theme";
 import { useState } from "react";
 import Title from "../components/Title";
+import React from "react";
 
 const StartGameScreen = (props: { onPickNumber: any }) => {
   const { onPickNumber } = props;

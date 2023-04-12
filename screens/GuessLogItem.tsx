@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import theme from "../theme";
+import React from "react";
 
 const GuessLogItem = (props: { guess: number; roundNumber: number }) => {
   const { roundNumber, guess } = props;

@@ -3,6 +3,7 @@ import Title from "../components/Title";
 import theme from "../theme";
 import { Button } from "../components";
 import { ButtonStyles } from "../styles/Button.style";
+import React from "react";
 
 const GameOverScreen = (props: { onStartNewGame: any }) => {
   const restartGame = () => {

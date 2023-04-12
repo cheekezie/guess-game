@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { ButtonPropsI } from "../types/button";
 import theme from "../theme";
 import { useState } from "react";
+import React from "react";
 
 const Button = (props: ButtonPropsI) => {
   const [pressed, setPressed] = useState(false);

@@ -8,6 +8,7 @@ import { Button } from "../components";
 import { ButtonStyles } from "../styles/Button.style";
 import { AntDesign } from "@expo/vector-icons";
 import GuessLogItem from "./GuessLogItem";
+import React from "react";
 
 const generateRandom = (max: number, min: number, exclude: number): number => {
   const randomNum = Math.floor(Math.random() * (max - min)) + min; // random number between min and max

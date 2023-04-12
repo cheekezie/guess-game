@@ -2,6 +2,7 @@ import { StyleSheet, Text } from "react-native";
 import theme from "../theme";
 import { TitlePropsI } from "../types/title";
 import { TitleStyles } from "../styles/Title.style";
+import React from "react";
 
 const Title = (props: TitlePropsI) => {
   return (
