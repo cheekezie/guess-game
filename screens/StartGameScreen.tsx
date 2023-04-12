@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
   inputContainer: {
-    marginTop: 400,
+    marginTop: Platform.select({ ios: 80, android: 100 }),
     paddingVertical: 20,
     paddingHorizontal: 16,
     marginHorizontal: 24,
